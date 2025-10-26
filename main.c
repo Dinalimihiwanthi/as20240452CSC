@@ -393,6 +393,20 @@ double calculateTime(double D, double S) {
     if (S <= 0.0) return 0.0;
     return D / S;
 }
+/* --- FILE I/O --- */
+void saveRoutesToFile(void) {
+    FILE *f = fopen("routes.txt", "w");
+    if (!f) { printf("Error saving routes!\n"); return; }
+    fprintf(f, "%d\n", cityCount);
+    for (int i = 0; i < cityCount; i++)
+        fprintf(f, "%s\n", cities[i]);
+    for (int i = 0; i < cityCount; i++) {
+        for (int j = 0; j < cityCount; j++)
+            fprintf(f, "%.2f ", distanceMatrix[i][j]);
+        fprintf(f, "\n");
+    }
+    fclose(f);
+}
 
 
 
