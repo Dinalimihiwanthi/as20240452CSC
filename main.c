@@ -342,5 +342,45 @@ void viewReports(void) {
         printf("Average Delivery Time: %.2f hours\n", totalTime / deliveryCount);
     printf("=============================\n");
 }
+/* --- HELPERS --- */
+void displayDistanceTable(void) {
+    if (cityCount == 0) {
+        printf("No cities defined.\n");
+        return;
+    }
+    printf("\n--- Distance Table (km) ---\n      ");
+    for (int i = 0; i < cityCount; i++)
+        printf("%10s", cities[i]);
+    printf("\n");
+    for (int i = 0; i < cityCount; i++) {
+        printf("%-6s", cities[i]);
+        for (int j = 0; j < cityCount; j++) {
+            if (distanceMatrix[i][j] < 0) printf("%10s", "-");
+            else printf("%10.2f", distanceMatrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+
+int getInt(const char *prompt) {
+    int x;
+    printf("%s", prompt);
+    while (scanf("%d", &x) != 1) {
+        while (getchar() != '\n');
+        printf("Please enter a valid integer: ");
+    }
+    return x;
+}
+
+
+
+int getCityIndex(const char *prompt) {
+    int num = getInt(prompt);
+    return num - 1; /* user sees 1..N, we store 0..N-1 */
+}
+
+
 
 
