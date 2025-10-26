@@ -381,6 +381,18 @@ int getCityIndex(const char *prompt) {
     return num - 1; /* user sees 1..N, we store 0..N-1 */
 }
 
+/* --- CALCULATIONS --- */
+double calculateCost(double D, double R, double W) {
+    return D * R * (1.0 + W / 10000.0);
+}
+double calculateFuel(double D, double E) {
+    if (E <= 0.0) return 0.0;
+    return D / E;
+}
+double calculateTime(double D, double S) {
+    if (S <= 0.0) return 0.0;
+    return D / S;
+}
 
 
 
