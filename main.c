@@ -447,6 +447,13 @@ void loadDeliveriesFromFile(void) {
     }
     fclose(f);
 }
+void saveData(void) {
+    saveRoutesToFile();
+    saveDeliveriesToFile();
+    printf("Data saved to files.\n");
+}
+
+
 
 
 
