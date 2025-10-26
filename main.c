@@ -323,5 +323,24 @@ void newDelivery(void) {
     printf("======================================\n");
 }
 
+/* --- REPORTS --- */
+void viewReports(void) {
+    double totalDist = 0, totalTime = 0, totalProfit = 0, totalRevenue = 0;
+    for (int i = 0; i < deliveryCount; i++) {
+        totalDist += deliveries[i].distance;
+        totalTime += deliveries[i].time;
+        totalProfit += deliveries[i].profit;
+        totalRevenue += deliveries[i].customerCharge;
+    }
+
+    printf("\n========== REPORTS ==========\n");
+    printf("Total Deliveries: %d\n", deliveryCount);
+    printf("Total Distance: %.2f km\n", totalDist);
+    printf("Total Revenue: %.2f LKR\n", totalRevenue);
+    printf("Total Profit: %.2f LKR\n", totalProfit);
+    if (deliveryCount > 0)
+        printf("Average Delivery Time: %.2f hours\n", totalTime / deliveryCount);
+    printf("=============================\n");
+}
 
 
