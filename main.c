@@ -143,4 +143,15 @@ void addCity(void) {
     cityCount++;
     printf("City added.\n");
 }
+void displayCities(void) {
+    if (cityCount == 0) {
+        printf("No cities added yet.\n");
+        return;
+    }
+    printf("\nList of Cities:\n");
+    for (int i = 0; i < cityCount; i++) {
+        printf("%d. %s\n", i + 1, cities[i]);
+    }
+}
+
 
