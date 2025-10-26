@@ -110,5 +110,27 @@ void menu(void) {
         }
     } while (choice != 0);
 }
+/* --- CITY MANAGEMENT --- */
+void cityManagement(void) {
+    int ch;
+    do {
+        printf("\n--- CITY MANAGEMENT ---\n");
+        printf("1. Add new city\n");
+        printf("2. Rename city\n");
+        printf("3. Remove city\n");
+        printf("4. Display cities\n");
+        printf("0. Back\n");
+        ch = getInt("Enter choice: ");
+
+        switch (ch) {
+            case 1: addCity(); break;
+            case 2: renameCity(); break;
+            case 3: removeCity(); break;
+            case 4: displayCities(); break;
+            case 0: break;
+            default: printf("Invalid choice!\n");
+        }
+    } while (ch != 0);
+}
 
 
