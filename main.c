@@ -84,4 +84,31 @@ int main(void) {
     saveData();
     return 0;
 }
+/* --- MENU --- */
+void menu(void) {
+    int choice;
+    do {
+        printf("\n========== LOGISTICS MANAGEMENT SYSTEM ==========\n");
+        printf("1. City Management\n");
+        printf("2. Distance Management\n");
+        printf("3. New Delivery Request\n");
+        printf("4. Reports\n");
+        printf("5. Save Data to Files\n");
+        printf("6. Load Data from Files\n");
+        printf("0. Exit\n");
+        choice = getInt("Enter choice: ");
+
+        switch (choice) {
+            case 1: cityManagement(); break;
+            case 2: distanceManagement(); break;
+            case 3: newDelivery(); break;
+            case 4: viewReports(); break;
+            case 5: saveData(); break;
+            case 6: loadData(); break;
+            case 0: printf("Exiting...\n"); break;
+            default: printf("Invalid choice!\n");
+        }
+    } while (choice != 0);
+}
+
 
