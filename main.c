@@ -407,6 +407,19 @@ void saveRoutesToFile(void) {
     }
     fclose(f);
 }
+void loadRoutesFromFile(void) {
+    FILE *f = fopen("routes.txt", "r");
+    if (!f) return;
+    if (fscanf(f, "%d\n", &cityCount) != 1) { fclose(f); return; }
+    if (cityCount < 0 || cityCount > MAX_CITIES) { fclose(f); cityCount = 0; return; }
+    for (int i = 0; i < cityCount; i++)
+        fscanf(f, "%49s\n", cities[i]);
+    for (int i = 0; i < cityCount; i++)
+        for (int j = 0; j < cityCount; j++)
+            fscanf(f, "%lf", &distanceMatrix[i][j]);
+    fclose(f);
+}
+
 
 
 
