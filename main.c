@@ -199,5 +199,51 @@ void removeCity(void) {
     cityCount--;
     printf("City removed.\n");
 }
+/* --- DISTANCE MANAGEMENT --- */
+void distanceManagement(void) {
+    int ch;
+    do {
+        printf("\n--- DISTANCE MANAGEMENT ---\n");
+        printf("1. Enter/Edit distance\n");
+        printf("2. Display distance table\n");
+        printf("0. Back\n");
+        ch = getInt("Enter choice: ");
+
+        switch (ch) {
+            case 1: {
+                if (cityCount < 2) {
+                    printf("Add at least two cities first.\n");
+                    break;
+                }
+                displayCities();
+                int s = getCityIndex("Enter source city number: ");
+                int t = getCityIndex("Enter destination city number: ");
+                if (s < 0 || s >= cityCount || t < 0 || t >= cityCount) {
+                    printf("Invalid city index.\n");
+                    break;
+                }
+                if (s == t) {
+                    printf("Distance from city to itself = 0.\n");
+                    break;
+                }
+                double d;
+                printf("Enter distance (km): ");
+                if (scanf("%lf", &d) != 1) { while (getchar()!='\n'); printf("Bad input.\n"); break; }
+                distanceMatrix[s][t] = d;
+                distanceMatrix[t][s] = d;
+                printf("Distance updated.\n");
+                break;
+            }
+            case 2:
+                displayDistanceTable();
+                break;
+            case 0:
+                break;
+            default:
+                printf("Invalid choice!\n");
+        }
+    } while (ch != 0);
+}
+
 
 
