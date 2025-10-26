@@ -133,4 +133,14 @@ void cityManagement(void) {
     } while (ch != 0);
 }
 
+void addCity(void) {
+    if (cityCount >= MAX_CITIES) {
+        printf("City list is full!\n");
+        return;
+    }
+    printf("Enter city name: ");
+    scanf("%s", cities[cityCount]);
+    cityCount++;
+    printf("City added.\n");
+}
 
