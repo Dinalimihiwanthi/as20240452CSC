@@ -153,5 +153,20 @@ void displayCities(void) {
         printf("%d. %s\n", i + 1, cities[i]);
     }
 }
+void renameCity(void) {
+    if (cityCount == 0) {
+        printf("No cities to rename!\n");
+        return;
+    }
+    displayCities();
+    int index = getCityIndex("Enter city number to rename: ");
+    if (index < 0 || index >= cityCount) {
+        printf("Invalid number!\n");
+        return;
+    }
+    printf("Enter new name: ");
+    scanf("%49s", cities[index]);
+    printf("City renamed.\n");
+}
 
 
