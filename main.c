@@ -452,6 +452,14 @@ void saveData(void) {
     saveDeliveriesToFile();
     printf("Data saved to files.\n");
 }
+void loadData(void) {
+    loadRoutesFromFile();
+    loadDeliveriesFromFile();
+    printf("Data loaded (if available).\n");
+}
+
+
+
 
 
 
