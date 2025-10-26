@@ -169,4 +169,35 @@ void renameCity(void) {
     printf("City renamed.\n");
 }
 
+void removeCity(void) {
+    if (cityCount == 0) {
+        printf("No cities to remove!\n");
+        return;
+    }
+    displayCities();
+    int index = getCityIndex("Enter city number to remove: ");
+    if (index < 0 || index >= cityCount) {
+        printf("Invalid number!\n");
+        return;
+    }
+
+    for (int i = index; i < cityCount - 1; i++) {
+        for (int j = 0; j < MAX_NAME_LEN; j++)
+            cities[i][j] = cities[i + 1][j];
+    }
+
+    for (int i = index; i < cityCount - 1; i++) {
+        for (int j = 0; j < cityCount; j++) {
+            distanceMatrix[i][j] = distanceMatrix[i + 1][j];
+        }
+    }
+    for (int j = index; j < cityCount - 1; j++) {
+        for (int i = 0; i < cityCount - 1; i++) {
+            distanceMatrix[i][j] = distanceMatrix[i][j + 1];
+        }
+    }
+    cityCount--;
+    printf("City removed.\n");
+}
+
 
