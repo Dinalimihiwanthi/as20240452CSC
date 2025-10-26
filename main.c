@@ -420,6 +420,19 @@ void loadRoutesFromFile(void) {
     fclose(f);
 }
 
+void saveDeliveriesToFile(void) {
+    FILE *f = fopen("deliveries.txt", "w");
+    if (!f) return;
+    fprintf(f, "%d\n", deliveryCount);
+    for (int i = 0; i < deliveryCount; i++) {
+        Delivery d = deliveries[i];
+        fprintf(f, "%d %d %d %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f\n",
+                d.source, d.destination, d.vehicleType, d.weight, d.distance,
+                d.baseCost, d.fuelUsed, d.fuelCost, d.operationalCost,
+                d.profit, d.customerCharge, d.time);
+    }
+    fclose(f);
+}
 
 
 
