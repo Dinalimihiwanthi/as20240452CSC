@@ -433,6 +433,20 @@ void saveDeliveriesToFile(void) {
     }
     fclose(f);
 }
+void loadDeliveriesFromFile(void) {
+    FILE *f = fopen("deliveries.txt", "r");
+    if (!f) return;
+    if (fscanf(f, "%d\n", &deliveryCount) != 1) { fclose(f); deliveryCount = 0; return; }
+    if (deliveryCount < 0 || deliveryCount > MAX_DELIVERIES) { fclose(f); deliveryCount = 0; return; }
+    for (int i = 0; i < deliveryCount; i++) {
+        Delivery *d = &deliveries[i];
+        fscanf(f, "%d %d %d %lf %lf %lf %lf %lf %lf %lf %lf %lf",
+               &d->source, &d->destination, &d->vehicleType, &d->weight,
+               &d->distance, &d->baseCost, &d->fuelUsed, &d->fuelCost,
+               &d->operationalCost, &d->profit, &d->customerCharge, &d->time);
+    }
+    fclose(f);
+}
 
 
 
